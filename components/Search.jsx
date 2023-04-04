@@ -47,26 +47,18 @@ function Search() {
           </IconButton>
         </form>
       </div>
-      {/* <div>
-        {searchResults.length > 0 && (
-          <div>
-            <h2>Search Results:</h2>
-            {searchResults.map(result => (
-              <a key={result.symbol} href={`https://finance.yahoo.com/quote/${result.symbol}`} target="_blank" rel="noopener noreferrer">
-              {result.displaySymbol}
-              </a>
-            ))}
-          </div>
-        )}
-      </div> */}
       <div>
         {searchResults.length > 0 && (
           <div>
             <h2>Search Results:</h2>
             {searchResults.map(result => (
-              <a key={result.symbol} onClick={() => router.push(`/stock?symbol=${result.symbol}`)}>
-                {result.displaySymbol}
-              </a>
+              <a key={result.symbol} onClick={() => {
+  router.push(`/stock?symbol=${result.symbol}&newsSymbol=${result.symbol}`);
+}}>
+  {result.displaySymbol}
+</a>
+
+              
             ))}
           </div>
         )}
