@@ -23,14 +23,14 @@ const StockNews = ({ symbol }) => {
   }, [symbol]);
 
   return (
-    <div>
+    <div className="news-container">
       <Head>
         <title>{symbol} Stock News</title>
       </Head>
       <h1>{symbol} Stock News</h1>
       {articles.map(article => (
         <article key={article.id}>
-          <img src={article.image ? article.image : "/logo.jpg"} alt={article.headline} width="100" height="100"/>
+          <img src={article.image ? article.image : "/logo.jpg"} alt={article.headline} width="125" height="125"/>
           <a href={article.url}>{article.source} - {article.headline}</a>
           <p>{`${article.summary}`}</p>
         </article>

@@ -55,7 +55,7 @@ function StockStats({ symbol }) {
   } = overviewData;
 
   return (
-    <div>
+    <div className="stats-container">
       <h1>{Symbol} Stock Data</h1>
       <div style={{columns: 2}}>
         <p>Current Price: {currentPrice}</p>

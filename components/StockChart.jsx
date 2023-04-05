@@ -31,7 +31,8 @@ const StockChart = ({ symbol }) => {
   }
 
   return (
-    <AreaChart width={800} height={400} data={formattedData}>
+    <div className='chart-container'>
+      <AreaChart width={800} height={400} data={formattedData}>
       <defs>
         <linearGradient id="colorPrice" x1="0" y1="0" x2="0" y2="1">
           <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
@@ -43,7 +44,8 @@ const StockChart = ({ symbol }) => {
       <CartesianGrid stroke="#ccc" />
       <Tooltip />
       <Area type="monotone" dataKey="price" stroke="#8884d8" fillOpacity={1} fill="url(#colorPrice)" />
-    </AreaChart>
+      </AreaChart>
+    </div>
   );
 };
 

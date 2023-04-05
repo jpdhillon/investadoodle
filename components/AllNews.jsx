@@ -25,7 +25,7 @@ const AllNews = () => {
       <h1>Market News:</h1>
       {news.map((article, index) => (
         <article key={index}>
-          <img src={article.image ? article.image : "/logo.jpg"} alt={article.headline} width="100" height="100" />
+          <img src={article.image ? article.image : "/logo.jpg"} alt={article.headline} width="125" height="125" />
           <a href={article.url} target="_blank" rel="noopener noreferrer">
             {`${article.source} - ${article.headline}`}
           </a>

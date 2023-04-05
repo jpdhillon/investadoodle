@@ -28,7 +28,7 @@ function StockPage() {
           <p>Search the latest stock market data and news!</p>
           <Link href='/'>Back Home</Link>
         </header>
-        <h1>
+        <h1 className='stockPageH1'>
           {decodedDescription}, {symbol}
         </h1>
         <StockChart symbol={symbol} />

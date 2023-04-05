@@ -73,4 +73,31 @@ header link {
   max-width: 100%;
 }
 
+.news-container {
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
 
+.stats-container {
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.stockPageH1 {
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.chart-container {
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+article {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+article p {
+  color: black;
+}
