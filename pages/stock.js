@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import StockNews from '../components/StockNews'
 import StockStats from '../components/StockStats'
+import StockChart from '@/components/StockChart'
 
 function StockPage() {
   const router = useRouter()
@@ -30,6 +31,7 @@ function StockPage() {
         <h1>
           {decodedDescription}, {symbol}
         </h1>
+        <StockChart symbol={symbol} />
         <StockStats symbol={symbol} />
         <StockNews symbol={newsSymbol} />
       </main>
