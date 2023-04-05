@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
+import { color } from '@mui/system';
 
 const AllNews = () => {
   const [news, setNews] = useState([]);
@@ -24,10 +25,11 @@ const AllNews = () => {
       <h1>Market News:</h1>
       {news.map((article, index) => (
         <article key={index}>
-          <img src={article.image ? article.image : "/logo.jpg"} alt={article.headline} width="50" height="50" />
+          <img src={article.image ? article.image : "/logo.jpg"} alt={article.headline} width="100" height="100" />
           <a href={article.url} target="_blank" rel="noopener noreferrer">
             {`${article.source} - ${article.headline}`}
           </a>
+          <p>{`${article.summary}`}</p>
         </article>
       ))}
     </div>

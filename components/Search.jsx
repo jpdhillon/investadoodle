@@ -53,7 +53,8 @@ function Search() {
             <h2>Search Results:</h2>
             {searchResults.map(result => (
               <a key={result.symbol} onClick={() => {
-  router.push(`/stock?symbol=${result.symbol}&newsSymbol=${result.symbol}`);
+  const encodedDescription = encodeURIComponent(result.description);
+  router.push(`/stock?symbol=${result.symbol}&newsSymbol=${result.symbol}&description=${encodedDescription}`);
 }}>
   {result.displaySymbol}
 </a>
