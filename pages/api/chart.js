@@ -2,8 +2,9 @@ import axios from 'axios'
 
 export default async (req, res) => {
   const symbol = req.query.symbol
-  const alphaVantageAPIKey = process.env.ALPHA_VANTAGE_API_KEY
-  const url = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${symbol}&interval=5min&apikey=${alphaVantageAPIKey}`
+  const twelvedataAPIKey = process.env.TWELVEDATA_API_KEY
+  const url = `https://api.twelvedata.com/time_series?symbol=${symbol}
+&interval=5min&apikey=${twelvedataAPIKey}`
 
   try {
     const response = await axios.get(url)

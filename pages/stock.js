@@ -1,5 +1,6 @@
+// pages/stock.js
+import { useState } from 'react'
 import Head from 'next/head'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import StockNews from '../components/StockNews'
@@ -8,8 +9,14 @@ import StockChart from '../components/StockChart'
 
 function StockPage() {
   const router = useRouter()
-  const { symbol, newsSymbol, description } = router.query
-  const decodedDescription = decodeURIComponent(description)
+  const { symbol } = router.query
+  const [hasError, setHasError] = useState(false)
+
+  const handleError = () => {
+    setHasError(true)
+    window.alert('Too many requests, please wait a minute and try again.')
+    router.push('/')
+  }
 
   return (
     <div>
@@ -28,12 +35,10 @@ function StockPage() {
           <p>Search the latest stock market data and news!</p>
           <Link href='/'>Back Home</Link>
         </header>
-        <h1 className='stockPageH1'>
-          {decodedDescription}, {symbol}
-        </h1>
-        <StockChart symbol={symbol} />
-        <StockStats symbol={symbol} />
-        <StockNews symbol={newsSymbol} />
+        <h1 className='stockPageH1'>{symbol}</h1>
+        <StockChart symbol={symbol} onError={handleError} />
+        <StockStats symbol={symbol} onError={handleError} />
+        <StockNews symbol={symbol} onError={handleError} />
       </main>
     </div>
   )
