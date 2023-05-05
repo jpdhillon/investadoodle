@@ -7,7 +7,7 @@ const StockChart = ({ symbol, onError }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`/api/chart?symbol=${symbol}`);
+        const res = await fetch(`/api/chart?symbol=${symbol}&interval=5min&outputsize=100`);
         const data = await res.json();
 
         if (!data['values']) {
@@ -27,20 +27,32 @@ const StockChart = ({ symbol, onError }) => {
     return <p>Loading...</p>;
   }
 
+  // Find the latest date
+  const latestDate = data['values'].reduce((latest, value) => {
+    const date = new Date(value['datetime']);
+    return date > latest ? date : latest;
+  }, new Date(0));
+
   const formattedData = [];
   const times = data['values'].filter(value => {
     const date = new Date(value['datetime']);
-    return date.getUTCHours() >= 13 && date.getUTCHours() < 20; // Filter by NYSE trading hours
+    const estDate = new Date(date.getTime() - 4 * 60 * 60 * 1000); // Convert to EDT timezone
+    const hour = estDate.getUTCHours();
+    const minute = estDate.getUTCMinutes();
+
+    // Check if the value is from the latest date and within trading hours
+    return date.toDateString() === latestDate.toDateString() && hour >= 9 && (hour < 16 || (hour === 16 && minute === 0));
   });
 
   for (const time of times) {
     const price = parseFloat(time['close']);
     const date = new Date(time['datetime']);
-    const timeString = date.toLocaleTimeString('en-US', { hour12: false });
+    const estDate = new Date(date.getTime() - 4 * 60 * 60 * 1000); // Convert to EDT timezone
+    const timeString = estDate.toLocaleTimeString('en-US', { timeZone: 'UTC', hour: 'numeric', minute: '2-digit', hour12: true });
     formattedData.push({ time: timeString, price: price });
   }
 
-  return (
+ return (
     <div className='chart-container'>
       <AreaChart width={800} height={400} data={formattedData}>
         <defs>
@@ -49,8 +61,8 @@ const StockChart = ({ symbol, onError }) => {
             <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
           </linearGradient>
         </defs>
-        <XAxis dataKey="time" type="category" allowDuplicatedCategory={false} reversed />
-        <YAxis domain={[Math.min(...formattedData.map(d => d.price)), Math.max(...formattedData.map(d => d.price))]} />
+        <XAxis dataKey="time" type="category" allowDuplicatedCategory={false} reversed tickFormatter={(tickItem) => tickItem.replace(/:00/, '')} />
+        <YAxis domain={[Math.min(...formattedData.map(d => d.price)), Math.max(...formattedData.map(d => d.price))]} tickFormatter={(tickItem) => tickItem.toFixed(2)} />
         <CartesianGrid stroke="#ccc" />
         <Tooltip />
         <Area type="monotone" dataKey="price" stroke="#8884d8" fillOpacity={1} fill="url(#colorPrice)" />
@@ -60,5 +72,18 @@ const StockChart = ({ symbol, onError }) => {
 };
 
 export default StockChart;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

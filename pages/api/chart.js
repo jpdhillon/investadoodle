@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-export default async (req, res) => {
+export default async function handler(req, res) {
   const symbol = req.query.symbol
   const twelvedataAPIKey = process.env.TWELVEDATA_API_KEY
   const url = `https://api.twelvedata.com/time_series?symbol=${symbol}
-&interval=5min&apikey=${twelvedataAPIKey}`
+&interval=5min&outputsize=100&apikey=${twelvedataAPIKey}`
 
   try {
     const response = await axios.get(url)
