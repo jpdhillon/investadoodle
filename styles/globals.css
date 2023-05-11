@@ -1,9 +1,17 @@
+:root {
+  --primary-color: #096622;
+  --secondary-color: #ffffff;
+  --logo-font-size: 1.75rem;
+  --logo-img-size: 2.5rem;
+  --navbar-height: 2.5rem;
+}
+
 * {
   font-family: 'Balsamiq Sans', cursive;
 }
 
 body {
-  color: green;
+  color: #096622;
   background: white;
 }
 
@@ -76,6 +84,7 @@ header link {
 .news-container {
   margin-left: 3rem;
   margin-right: 3rem;
+  background-color: #99C2A1;
 }
 
 .stats-container {
@@ -106,3 +115,32 @@ article p {
   color: black;
 }
 
+.mainContent {
+  margin-top: 10rem;
+  /* Adjust this value based on your navbar's height */
+}
+
+.card {
+  /* background-color: #99C2A1; */
+  border-radius: 4px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 450px;
+}
+
+.search {
+  margin-left: 1rem;
+}
+
+.searchInput {
+  width: 50%;
+  height: 2rem;
+  font-size: large;
+  border: 1px solid green;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+  margin-top: .25rem;
+  margin-bottom: 1.5rem;
+}

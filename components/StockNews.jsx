@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 
 const StockNews = ({ symbol }) => {
   const [articles, setArticles] = useState([]);
@@ -30,7 +31,13 @@ const StockNews = ({ symbol }) => {
       <h1>{symbol} Stock News</h1>
       {articles.map(article => (
         <article key={article.id}>
-          <img src={article.image ? article.image : "/logo.jpg"} alt={article.headline} width="125" height="125"/>
+          {/* <img src={article.image ? article.image : "/logo.jpg"} alt={article.headline} width="125" height="125"/> */}
+          <Image
+            src={article.image ? article.image : "/logo.jpg"}
+            alt={article.headline}
+            width={125}
+            height={125}
+          />
           <a href={article.url}>{article.source} - {article.headline}</a>
           <p>{`${article.summary}`}</p>
         </article>

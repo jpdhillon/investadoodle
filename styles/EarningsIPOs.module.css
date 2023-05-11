@@ -1,0 +1,33 @@
+.earnings {
+  margin-left: 1rem;
+  background-color: #B2C2CD;
+}
+
+.earningsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-left: 1rem;
+}
+
+.earningsButton {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  padding: 10px 16px;
+  width: 5rem;
+}
+
+.ipoCard {
+  background-color: #f1f1f1;
+  border: solid 1px #ccc;
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}

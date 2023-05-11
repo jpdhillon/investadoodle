@@ -1,4 +1,3 @@
-// pages/stock.js
 import { useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
@@ -27,14 +26,6 @@ function StockPage() {
         <link rel='icon' href='/logo.jpg' />
       </Head>
       <main>
-        <header>
-          <div className='logoContainer'>
-            <h1>Investadoodle</h1>
-            <img src='/logo.jpg' alt='Investadoodle Logo' className='logo' />
-          </div>
-          <p>Search the latest stock market data and news!</p>
-          <Link href='/'>Back Home</Link>
-        </header>
         <h1 className='stockPageH1'>{symbol}</h1>
         <StockChart symbol={symbol} onError={handleError} />
         <StockStats symbol={symbol} onError={handleError} />

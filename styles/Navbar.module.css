@@ -1,0 +1,33 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  width: 100%;
+  height: var(--navbar-height);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 2vw;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: var(--logo-font-size);
+}
+
+.logo img {
+  margin-left: 1rem;
+  width: var(--logo-img-size);
+  height: var(--logo-img-size);
+}
+
+.logo:focus {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
