@@ -4,6 +4,7 @@
   --logo-font-size: 1.75rem;
   --logo-img-size: 2.5rem;
   --navbar-height: 2.5rem;
+  --footer-height: 1.25rem;
 }
 
 * {
@@ -34,7 +35,7 @@ form input {
   width: 60%;
   height: 75%;
   font-size: large;
-  border: 1px solid green;
+  border: 1px solid #096622;
   border-radius: 0.5rem;
   padding: 0.5rem;
   margin-left: 0.5rem;
@@ -82,14 +83,17 @@ header link {
 }
 
 .news-container {
-  margin-left: 3rem;
-  margin-right: 3rem;
-  background-color: #99C2A1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #e8fdee;
 }
 
 .stats-container {
-  margin-left: 3rem;
-  margin-right: 3rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-color: #f8fef9;
 }
 
 .stockPageH1 {
@@ -98,8 +102,11 @@ header link {
 }
 
 .chart-container {
-  margin-left: 3rem;
-  margin-right: 3rem;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: auto;
 }
 
 .clickIt:hover {
@@ -117,16 +124,15 @@ article p {
 
 .mainContent {
   margin-top: 10rem;
-  /* Adjust this value based on your navbar's height */
 }
 
 .card {
-  /* background-color: #99C2A1; */
   border-radius: 4px;
   padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 450px;
+  background-color: #f8fef9;
 }
 
 .search {
@@ -134,13 +140,87 @@ article p {
 }
 
 .searchInput {
+  width: 100%;
   width: 50%;
   height: 2rem;
   font-size: large;
-  border: 1px solid green;
+  border: 1px solid #096622;
   border-radius: 0.5rem;
   padding: 0.5rem;
   margin-left: 0.5rem;
   margin-top: .25rem;
   margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .searchInput {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .searchInput {
+    width: 70%;
+  }
+}
+
+.earnings {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-color: #f8fef9;
+}
+
+.earningsGrid {
+  display: grid;
+  justify-content: center;
+  gap: 1.5em;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: .75rem;
+}
+
+@media screen and (max-width: 768px) {
+  .earningsGrid {
+    gap: 1em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .earningsGrid {
+    gap: 0.5em;
+  }
+}
+
+.earningsButton {
+  background-color: #0fa437;
+  border: none;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  padding: 10px 16px;
+  width: 5rem;
+}
+
+.container {
+  color: #010803;
+}
+
+.grid-container {
+  display: grid;
+  justify-content: center;
+  gap: 10em;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: .75rem;
+  max-width: 90%;
+    /* adjust as needed */
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    gap: 3em;
+  }
 }

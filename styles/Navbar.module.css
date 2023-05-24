@@ -31,3 +31,18 @@
   outline: 2px solid var(--secondary-color);
   outline-offset: 2px;
 }
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  .logo {
+    font-size: calc(var(--logo-font-size) / 1.5);
+  }
+
+  .logo img {
+    width: calc(var(--logo-img-size) / 1.5);
+    height: calc(var(--logo-img-size) / 1.5);
+  }
+}

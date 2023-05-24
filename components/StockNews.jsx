@@ -4,6 +4,31 @@ import Image from 'next/image';
 
 const StockNews = ({ symbol }) => {
   const [articles, setArticles] = useState([]);
+  const [showAllArticles, setShowAllArticles] = useState(false);
+
+  const allowedDomains = [
+  'images.mktw.net',
+  'image.cnbcfm.com',
+  'media.zenfs.com',
+  'static.seekingalpha.com',
+  's.wsj.net',
+  's.yimg.com',
+  'images.barrons.com',
+  'mw3.wsj.net',
+  'static.reuters.com',
+  'media.gettyimages.com',
+  'pennystocks.com',
+];
+
+const recentNewsWithAllowedImages = articles.filter((article) => {
+  return article.image && allowedDomains.some((domain) => article.image.includes(domain));
+}).slice(0, 4);
+
+  const toggleShowAllArticles = () => {
+    setShowAllArticles((prevState) => !prevState);
+  };
+
+  const displayedArticles = showAllArticles ? articles : recentNewsWithAllowedImages;
 
   useEffect(() => {
     const currentDate = new Date();
@@ -25,23 +50,43 @@ const StockNews = ({ symbol }) => {
 
   return (
     <div className="news-container">
-      <Head>
-        <title>{symbol} Stock News</title>
-      </Head>
-      <h1>{symbol} Stock News</h1>
-      {articles.map(article => (
-        <article key={article.id}>
-          {/* <img src={article.image ? article.image : "/logo.jpg"} alt={article.headline} width="125" height="125"/> */}
-          <Image
-            src={article.image ? article.image : "/logo.jpg"}
-            alt={article.headline}
-            width={125}
-            height={125}
-          />
-          <a href={article.url}>{article.source} - {article.headline}</a>
-          <p>{`${article.summary}`}</p>
-        </article>
-      ))}
+      <h1>Market News:</h1>
+      <div className="grid-container">
+        {recentNewsWithAllowedImages.map((article, index) => (
+          <div key={index} className="card">
+            <div style={{ position: 'relative', height: '15rem' }}>
+              <Image
+                src={article.image ? article.image : '/logo.jpg'}
+                alt={article.headline}
+                fill
+                style={{ objectFit: 'contain' }}
+              />
+            </div>
+            <div className="container">
+              <a href={article.url} target="_blank" rel="noopener noreferrer">
+                {`${article.source} - ${article.headline}`}
+              </a>
+              <p>{`${article.summary}`}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      {showAllArticles && (
+        <div className="articles-container">
+          {displayedArticles.map((article, index) => (
+            <article key={index}>
+              <a href={article.url} target="_blank" rel="noopener noreferrer">
+                {`${article.source} - ${article.headline}`}
+              </a>
+            </article>
+          ))}
+        </div>
+      )}
+      {articles.length > 4 && (
+        <button onClick={toggleShowAllArticles}>
+          {showAllArticles ? 'Show Less' : 'Show More'}
+        </button>
+      )} 
     </div>
   );
 };

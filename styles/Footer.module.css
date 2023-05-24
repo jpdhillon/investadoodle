@@ -1,0 +1,27 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #021808;
+  width: 100%;
+  height: var(--footer-height);
+  position: bottom;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 2vw;
+  margin-top: .75rem;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+}
+
+.disclaimer {
+  display: flex;
+  align-items: center;
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 2.25vmin;
+}
+

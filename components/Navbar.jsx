@@ -9,7 +9,6 @@ const Navbar = () => {
       <Link href="/">
         <div className={styles.logo}>
           <h1>Investadoodle</h1>
-          {/* <img src="/chart-line-upW.svg" alt="Investadoodle Logo" /> */}
           <Image src="/chart-line-upW.svg" alt="Investadoodle Logo" width={100} height={100}/>
         </div>
       </Link>

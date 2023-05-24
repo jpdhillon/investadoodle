@@ -1,5 +1,6 @@
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import { useEffect, useState } from 'react';
+import { ResponsiveContainer } from 'recharts';
 
 const StockChart = ({ symbol, onError }) => {
   const [data, setData] = useState(null);
@@ -17,7 +18,7 @@ const StockChart = ({ symbol, onError }) => {
         setData(data);
       } catch (error) {
         console.error('Error fetching data:', error);
-        onError(); // Call onError prop function
+        onError(); 
       }
     };
     fetchData();
@@ -27,7 +28,6 @@ const StockChart = ({ symbol, onError }) => {
     return <p>Loading...</p>;
   }
 
-  // Find the latest date
   const latestDate = data['values'].reduce((latest, value) => {
     const date = new Date(value['datetime']);
     return date > latest ? date : latest;
@@ -40,7 +40,6 @@ const StockChart = ({ symbol, onError }) => {
     const hour = estDate.getUTCHours();
     const minute = estDate.getUTCMinutes();
 
-    // Check if the value is from the latest date and within trading hours
     return date.toDateString() === latestDate.toDateString() && hour >= 9 && (hour < 16 || (hour === 16 && minute === 0));
   });
 
@@ -53,8 +52,9 @@ const StockChart = ({ symbol, onError }) => {
   }
 
  return (
-    <div className='chart-container'>
-      <AreaChart width={800} height={400} data={formattedData}>
+  <div className='chart-container'>
+    <ResponsiveContainer width="100%" height={400}>
+      <AreaChart data={formattedData}>
         <defs>
           <linearGradient id="colorPrice" x1="0" y1="0" x2="0" y2="1">
             <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
@@ -67,11 +67,16 @@ const StockChart = ({ symbol, onError }) => {
         <Tooltip />
         <Area type="monotone" dataKey="price" stroke="#8884d8" fillOpacity={1} fill="url(#colorPrice)" />
       </AreaChart>
-    </div>
-  );
+    </ResponsiveContainer>
+  </div>
+ );
 };
 
 export default StockChart;
+
+
+
+
 
 
 

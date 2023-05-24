@@ -12,7 +12,7 @@ function StockStats({ symbol, onError }) {
         setData(data);
       } catch (error) {
         console.error('Error fetching all stock data:', error);
-        onError(); // Call onError prop function
+        onError(); 
       }
     }
     fetchData();

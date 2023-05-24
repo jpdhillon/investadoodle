@@ -1,5 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-
 import axios from 'axios'
 
 const alphaVantageAPIKey = process.env.ALPHA_VANTAGE_API_KEY
